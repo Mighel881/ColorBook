@@ -1,0 +1,9 @@
+.DS_Store
+.theos
+theos
+obj
+colorbook_prefs/obj
+packages
+*.deb
+*.dylib
+*.sh
