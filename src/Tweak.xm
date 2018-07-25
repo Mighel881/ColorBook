@@ -5,6 +5,7 @@
 
 // Globals vars
 bool global_enabled = false;
+bool global_random = false;
 CGFloat global_red = 1.0;
 CGFloat global_green = 1.0;
 CGFloat global_blue = 1.0;
@@ -32,6 +33,7 @@ static float getFloatPref(NSString *name) {
 
 static void loadPrefs() {
     global_enabled = pref_getBool(@"pref_enable");
+    global_random = pref_getBool(@"pref_random");
     global_red = getFloatPref(@"pref_red");
     global_blue = getFloatPref(@"pref_blue");
     global_green = getFloatPref(@"pref_green");
@@ -70,10 +72,17 @@ static void applyColor(UIView *view) {
 
 %end
 
+#define MACRO_RANDOM_VALUE arc4random() / ((double) (((long long)2<<31) -1))
 
 %ctor {
 
     loadPrefs();
+
+    if (global_random) {
+        global_red = MACRO_RANDOM_VALUE;
+        global_blue = MACRO_RANDOM_VALUE;
+        global_green = MACRO_RANDOM_VALUE;
+    }
 
     if (global_enabled) {
         %init(COLOR_FACE);

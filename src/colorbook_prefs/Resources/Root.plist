@@ -32,6 +32,23 @@
 
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+
+			<key>default</key>
+			<false/>
+
+			<key>defaults</key>
+			<string>me.pr0crustes.colorbook_prefs</string>
+
+			<key>label</key>
+			<string>Random Color</string>
+
+			<key>key</key>
+			<string>pref_random</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 		</dict>
 
